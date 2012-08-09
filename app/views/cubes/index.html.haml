@@ -1,0 +1,78 @@
+.title
+  %h2.instructions
+    Move your mouse around to control the cube
+  %h2.one
+    When David wants to test some JavaScript
+  %h1.two
+    He Makes that shit awesome!
+  %h3.instructions
+    View this in Google Chrome to see the full awesomeness
+  
+
+#experiment
+  #cube
+    .face.one
+      %h1 
+        Team Classwave
+      = image_tag("cw_logo_bookandtext.png", width: "350px")
+    .face.two
+      = image_tag("Andy.jpeg", height:" 350px")
+    .face.three
+      = image_tag("Dan.jpeg", height: "350px")
+    .face.four
+      = image_tag("Jordan.jpeg", height: "350px")
+    .face.five
+      = image_tag("david_funny.png", height: "350px")
+    .face.six
+      = image_tag("rahul.jpeg", height: "350px")
+
+/.direction
+
+
+:javascript
+
+  //document load stuff
+  $(document).ready(function() {
+    $('h2.one').delay(800).fadeIn(800).delay(800).fadeOut(500);
+    $('h1.two').delay(2900).fadeIn(1000).delay(800).fadeOut(500);
+    $('#cube, .face, h2.instructions, h3.instructions').delay(5200).fadeIn(1000);
+  });
+
+  //mouse coordinate cube controls
+
+  $(function(){
+    var last_position = {};
+    //var $direction = $('.direction');
+
+    $('#experiment').on('mousemove', function(event){
+            if (typeof(last_position.x) != 'undefined') {
+            var deltaX = last_position.x - event.offsetX,
+                deltaY = last_position.y - event.offsetY;
+            var xAngle = 0, yAngle = 0;
+            if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX > 0) {
+                //left
+                //$direction.append('<span>left</span>');
+                yAngle -= 90;
+            } else if (Math.abs(deltaX) > Math.abs(deltaY) && deltaX < 0) {
+                //right
+                yAngle += 90;
+                //$direction.append('<span>right</span>');
+            } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY > 0) {
+                //up
+                xAngle += 90;
+                //$direction.append('<span>up</span>');
+            } else if (Math.abs(deltaY) > Math.abs(deltaX) && deltaY < 0) {
+                //down
+                xAngle -= 90;
+               //$direction.append('<span>down</span>');
+            }
+        }
+        last_position = {
+            x : event.offsetX,
+            y : event.offsetY
+        }; 
+        $('#cube')[0].style.webkitTransform = "rotateX("+xAngle+"deg) rotateY("+yAngle+"deg)";
+    });
+  });
+
+  

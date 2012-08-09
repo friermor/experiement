@@ -1,0 +1,90 @@
+// Place all the styles related to the cubes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.title {
+  text-align: center;
+  color: white;
+
+
+  h1, h2, h3{
+    display: none;
+    font-weight: 300 !important;
+    text-shadow: 5px 5px 2px black;
+
+
+  }
+  h2{
+    font-size: 40px;
+    font-weight: 300 !important;
+    text-shadow: 5px 5px 2px black;
+    line-height: 50px;
+  }
+  h1 {
+    font-size: 100px;
+    font-weight: 300 !important;
+    line-height: 90px;
+  }
+  h3 {
+    line-height: 40px;
+  }
+}
+
+#experiment {
+  margin-top: 50px;
+  -webkit-perspective: 800;
+  -webkit-perspective-origin: 50% 200px;
+  #cube {
+    display: none;
+    position: relative;
+    margin: 0 auto;
+    height: 400px;
+    width: 400px;
+    -webkit-transition: -webkit-transform 2s linear;
+    -webkit-transform-style: preserve-3d;
+    .face {
+      display: none;
+      position: absolute;
+      height: 360px;
+      width: 360px;
+      padding: 20px;
+      background: rgba(50,50,50,0.0);
+      color: whitesmoke;
+      text-shadow: 1px 1px 1px black;
+      text-align: center;
+      img {
+        vertical-align: middle;
+        display: inline-block;
+        box-shadow: 5px 5px 5px black;
+      }
+      h1 {
+        text-shadow: 5px 5px 5px black;
+      }
+    }
+    .one {
+      -webkit-transform: rotateX(90deg) translateZ(200px);
+      img {
+        box-shadow: none;
+      }
+    }
+    .two {
+      -webkit-transform: translateZ(200px);
+    }
+    .three {
+      -webkit-transform: rotateY(90deg) translateZ(200px);
+    }
+    .four {
+      -webkit-transform: rotateY(180deg) translateZ(200px);
+    }
+    .five {
+      -webkit-transform: rotateY(-90deg) translateZ(200px);
+    }
+    .six {
+      -webkit-transform: rotateX(-90deg) translateZ(200px) rotate(180deg);
+    }
+  }
+  span {
+    display: block;
+  }
+}
